@@ -163,7 +163,7 @@ int main() {
    cout << "Enter the number of columns for the game board (odd number): ";
    cin >> numCols;
    while (numCols % 2 == 0) {
-       cout << "Number of columns must be an Odd number. Please enter again: ";
+       cout << "Number of columns must be an odd number. Please enter again: ";
        cin >> numCols;
    }
 
@@ -171,7 +171,7 @@ int main() {
    cout << "Enter the number of Zombies on the board: ";
    cin >> numZombies;
    while (numZombies > (numRows * numCols) - 1) {
-       cout << "Too many Zombies for the board size. Please enter again: ";
+       cout << "Too many Zombies for the board size. Please re-enter again: ";
        cin >> numZombies;
    }
 
