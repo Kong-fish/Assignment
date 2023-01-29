@@ -145,7 +145,7 @@ int main() {
    cout << "Enter the number of Zombies on the board: ";
    cin >> numZombies;
    while (numZombies > (numRows * numCols) - 1) {
-       cout << "Too many Zombies for the board size. Please enter again: ";
+       cout << "Too many Zombies for the board size. Please re-enter again: ";
        cin >> numZombies;
    }
 
