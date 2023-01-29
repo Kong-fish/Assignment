@@ -1,30 +1,22 @@
-//This will be the main code we will edit and hand in
+//This will be the main code we will edit 
 //Please familliar with Github cause it shares code and easy to work with more than sharing on googele doc
 // let fight for three days no sleep 
 
 #include <iostream>
 #include <fstream>
-
-
 using namespace std;
-
 
 const int MAX_ROWS = 100;
 const int MAX_COLS = 100;
-
-
 char board[MAX_ROWS][MAX_COLS];
-
 
 // Alien and Zombie variables
 int alienX, alienY;
 int zombies[MAX_ROWS * MAX_COLS];
 int numZombies;
 
-
 // Game settings
 int numRows, numCols;
-
 
 void initializeBoard() {
    // Clear board
@@ -33,14 +25,10 @@ void initializeBoard() {
            board[i][j] = '.';
        }
    }
-
-
    // Place Alien at center of board
    alienX = numRows / 2;
    alienY = numCols / 2;
    board[alienX][alienY] = 'A';
-
-
    // Place Zombies randomly on board
    for (int i = 0; i < numZombies; i++) {
        int x, y;
@@ -51,10 +39,7 @@ void initializeBoard() {
        board[x][y] = 'Z';
        zombies[i] = x * numCols + y;
    }
-
-
 }
-
 
 void displayBoard() {
    // Display column numbers
@@ -73,23 +58,18 @@ void displayBoard() {
            cout << i % 10 << " ";
        }
 
-
        for (int j = 0; j < numCols; j++) {
            cout << board[i][j];
        }
        cout << endl;
    }
-
-
 }
-
 
 void moveAlien(int x, int y) {
    if (x < 0 || x >= numRows || y < 0 || y >= numCols) {
        cout << "Invalid move." << endl;
        return;
    }
-
 
    if (board[x][y] == 'Z') {
        cout << "You defeated a Zombie!" << endl;
@@ -100,7 +80,6 @@ void moveAlien(int x, int y) {
            }
        }
    }
-
 
    board[alienX][alienY] = '.';
    alienX = x;
@@ -128,7 +107,6 @@ void saveGame(string fileName) {
    cout << "Game saved successfully." << endl;
 }
 
-
 void loadGame(string fileName) {
    ifstream inFile(fileName);
    inFile >> numRows >> numCols;
@@ -146,10 +124,8 @@ void loadGame(string fileName) {
    cout << "Game loaded successfully." << endl;
 }
 
-
 int main() {
    srand(time(0));
-
 
    cout << "Welcome to Alien vs Zombie!" << endl;
    cout << "Enter the number of rows for the game board (odd number): ";
@@ -159,14 +135,12 @@ int main() {
        cin >> numRows;
    }
 
-
    cout << "Enter the number of columns for the game board (odd number): ";
    cin >> numCols;
    while (numCols % 2 == 0) {
        cout << "Number of columns must be an odd number. Please enter again: ";
        cin >> numCols;
    }
-
 
    cout << "Enter the number of Zombies on the board: ";
    cin >> numZombies;
@@ -175,19 +149,14 @@ int main() {
        cin >> numZombies;
    }
 
-
    initializeBoard();
    displayBoard();
-
 
    char choice;
    int x, y;
    while (true) {
        cout << "Enter move (W - up, A - left, S - down, D - right, Q - quit, S - save, L - load): ";
        cin >> choice;
-
-
-
 
        if (choice == 'W') {
            x = alienX - 1;
@@ -227,7 +196,6 @@ int main() {
            continue;
        }
 
-
        moveAlien(x, y);
        displayBoard();
    }
@@ -235,8 +203,5 @@ int main() {
 
    cout << "Thank you for playing Alien vs Zombie!" << endl;
 
-
    return 0;
-
-
 }
