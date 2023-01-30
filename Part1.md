@@ -30,7 +30,7 @@ Describe the additional features that has been implemented.
 
 ### Kong Xin Yu
 
-1. Randomly generate game board.
+1. Generate game board.
 2. Documentation 
 3. Video Recordings
 
