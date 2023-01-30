@@ -65,9 +65,10 @@ void displayBoard()
         cout << setw(2) << (numRows - i);
 
         // display cell content and border of each column
-        for (int j = 0; j < numCols; ++j)
+        for (int j = 0; j < numRows; ++j)
         {
             cout << "|" << board[i][j];
+            cout << " " ;
         }
         cout << "|" << endl;
     }
