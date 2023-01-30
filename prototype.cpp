@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 const int MAX_ROWS = 100;
@@ -24,7 +25,7 @@ void initializeBoard()
     {
         for (int j = 0; j < numCols; j++)
         {
-            board[i][j] = '.';
+            board[i][j] = ' ';
         }
     }
     // Place Alien at center of board
@@ -39,7 +40,7 @@ void initializeBoard()
         {
             x = rand() % numRows;
             y = rand() % numCols;
-        } while (board[x][y] != '.');
+        } while (board[x][y] != ' ');
         board[x][y] = 'Z';
         zombies[i] = x * numCols + y;
     }
@@ -48,18 +49,21 @@ void initializeBoard()
 void displayBoard()
 {
     // system("cls") to initialize?
-    cout << "     . : Alien vs Zombie : ." << endl;
+    cout << " . : Alien vs Zombie : ." << endl;
     // for each row
-    for (int i = 0; i < numCols; ++i)
+    for (int i = 0; i < numRows; ++i)
     {
         // display upper border of the row
         cout << " ";
-        for (int j = 0; j < numCols; ++j)
+        for (int j = 0; j < numRows; ++j)
         {
-            cout << "+-";
+            cout << "+-+-";
         }
         cout << "+" << endl;
-        
+
+        // display row number
+        cout << setw(2) << (numRows - i);
+
         // display cell content and border of each column
         for (int j = 0; j < numCols; ++j)
         {
@@ -71,12 +75,12 @@ void displayBoard()
     cout << " ";
     for (int j = 0; j < numRows; ++j)
     {
-        cout << "+-";
+        cout << "+-+-";
     }
     cout << "+" << endl;
     // display column number
     cout << " ";
-    for (int j = 0; j < numRows; ++j)
+    for (int j = 0; j < numCols; ++j)
     {
         int digit = (j + 1) / 10;
         cout << " ";
@@ -87,7 +91,7 @@ void displayBoard()
     }
     cout << endl;
     cout << " ";
-    for (int j = 0; j < numRows; ++j)
+    for (int j = 0; j < numCols; ++j)
     {
         cout << " " << (j + 1) % 10;
     }
