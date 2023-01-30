@@ -42,7 +42,7 @@ void initializeBoard()
             y = rand() % numCols;
         } while (board[x][y] != ' ');
         board[x][y] = 'Z';
-        zombies[i] = x * numCols + y;
+    
     }
 }
 
