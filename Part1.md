@@ -36,13 +36,15 @@ Describe the additional features that has been implemented.
 
 ### Chan Yeng Hui
 
-1. Zombie movement and attack behaviour.
-2. 
+1. Generate game board.
+2. Zombie movement and attack behaviour.
+3. 
 
 ### Wong Wai Yee
 
-1. Implement all game objects.
-2. 
+1. Generate game board.
+2. Implement all game objects.
+3. 
 
 ## Problems Encountered & Solutions
 
