@@ -1,6 +1,3 @@
-// This will be the main code we will edit
-// Please familliar with Github cause it shares code and easy to work with more than sharing on googele doc
-
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -15,7 +12,7 @@ int alienX, alienY;
 int zombies[MAX_ROWS * MAX_COLS];
 int numZombies;
 
-// Game settings
+// Game Board settings
 int numRows, numCols;
 
 void initializeBoard()
@@ -54,29 +51,28 @@ void displayBoard()
     for (int i = 0; i < numRows; ++i)
     {
         // display upper border of the row
-        cout << " ";
+        cout << "  ";
         for (int j = 0; j < numRows; ++j)
         {
-            cout << "+-+-";
+            cout << "+-";
         }
         cout << "+" << endl;
 
         // display row number
-        cout << setw(2) << (numRows - i);
+        cout << setw(2) << (i+1);
 
         // display cell content and border of each column
         for (int j = 0; j < numRows; ++j)
         {
             cout << "|" << board[i][j];
-            cout << " " ;
         }
         cout << "|" << endl;
     }
     // display lower border of the last row
-    cout << " ";
+    cout << "  ";
     for (int j = 0; j < numRows; ++j)
     {
-        cout << "+-+-";
+        cout << "+-";
     }
     cout << "+" << endl;
     // display column number
@@ -91,13 +87,12 @@ void displayBoard()
             cout << digit;
     }
     cout << endl;
-    cout << " ";
+    cout << "  ";
     for (int j = 0; j < numCols; ++j)
     {
         cout << " " << (j + 1) % 10;
     }
-    cout << endl
-         << endl;
+    cout << endl;
 }
 
 void moveAlien(int x, int y)
@@ -207,34 +202,34 @@ int main()
     int x, y;
     while (true)
     {
-        cout << "Enter move (W - up, A - left, S - down, D - right, Q - quit, S - save, L - load): ";
+        cout << "Enter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load): ";
         cin >> choice;
 
-        if (choice == 'W')
+        if (choice == 'W'|| choice == 'w')
         {
             x = alienX - 1;
             y = alienY;
         }
-        else if (choice == 'A')
+        else if (choice == 'A'|| choice =='a')
         {
             x = alienX;
             y = alienY - 1;
         }
-        else if (choice == 'S')
+        else if (choice == 'S'|| choice == 's')
         {
             x = alienX + 1;
             y = alienY;
         }
-        else if (choice == 'D')
+        else if (choice == 'D'|| choice == 'd')
         {
             x = alienX;
             y = alienY + 1;
         }
-        else if (choice == 'Q')
+        else if (choice == 'Q'|| choice == 'q')
         {
             break;
         }
-        else if (choice == 'S')
+        else if (choice == 'V'|| choice == 'v')
         {
             string fileName;
             cout << "Enter the file name to save the game: ";
@@ -242,7 +237,7 @@ int main()
             saveGame(fileName);
             continue;
         }
-        else if (choice == 'L')
+        else if (choice == 'L'||choice == 'l')
         {
             string fileName;
             cout << "Enter the file name to load the game: ";
