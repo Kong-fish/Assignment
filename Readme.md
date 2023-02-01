@@ -1,6 +1,6 @@
 # Alien vs. Zombie
 
-On a planet far far away from earth, a young alien is fighthing unknown zombies that invade his home planet.
+On a planet far far away from earth, a young alien is fighthing unknown zombies that invade his home planet. Pick up arrows and help this young alien to protect his home.
 You as a player will help this alien to navigate his way to defeat the zombies and keep his home save.
 
 Alien vs. Zombie is a text-based game where player are able to input simple command to control the character which is the alien. The alien will be able to defeat the zombies by attacking the zombie on the position where the zombie at.
@@ -24,9 +24,8 @@ g++ main.cpp folder1\code.cpp folder2\code.cpp ......
 
 ## User Manual
 
-Please provide the user manual on how to use your program.
-
-Please DO NOT change the Progress Log below. Leave it as it is.
+First, generation of game board. Player is able to generate the game board according to 
+Player will be controlling the Alien which is 'A' in the game board.
 
 ## Progress Log
 
@@ -34,8 +33,6 @@ Please DO NOT change the Progress Log below. Leave it as it is.
 - [Part 2](PART2.md)
 
 ## Contributors
-
-Please replace the following with your group members' names. 
 
 - Kong Xin Yu
 - Chan Yeng Hui
