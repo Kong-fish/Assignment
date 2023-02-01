@@ -25,6 +25,7 @@ List all the features not yet done. Remove this section if there is no incomplet
 1. Game has initial game board sizes and 1 zombie as default without player input.
 2. Display to notify charactes are out of bounds.
 3. User able to input save file name.
+4. 
 
 ## Additional Features
 
@@ -52,7 +53,6 @@ Describe the additional features that has been implemented.
 
 ## Problems Encountered & Solutions
 
-Alien able to move pass right side bound.
 Game still continue after killing the zombie.
 Unable to displat proper numbering if game board coloum larger than 9.
 Save file unable to work properly.

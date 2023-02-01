@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include "helper.h"
+#include <cstdlib>
+#include "pf/helper.h"
 using namespace std;
 
 const int MAX_ROWS = 100;
@@ -14,6 +17,45 @@ int numZombies;
 
 // Game Board settings
 int numRows, numCols;
+
+namespace pf
+{
+    const int kRows = 3;
+    const int kColumns = 5;
+    char kBoard[kRows][kColumns];
+
+    int ClearScreen()
+    {
+        #if defined(_WIN32)
+            return std::system("cls");
+        #elif defined(__linux__) || defined(__APPLE__)
+            return std::system("clear");
+        #endif
+    }
+
+    int Pause()
+    {
+        #if defined(_WIN32)
+            return std::system("pause");
+        #elif defined(__linux__) || defined(__APPLE__)
+            return std::system(R"(read -p "Press any key to continue . . . " dummy)");
+        #endif
+    }
+}
+void gamePause()
+{
+    cout << "Pausing Now" << endl;
+    pf::Pause();
+    cout << endl;
+}
+
+void gameClearScreen()
+{
+    cout << "Pausing and Clearing Screen Now" << endl;
+    pf::Pause();
+    pf::ClearScreen();
+    cout << endl;
+}
 
 void initializeBoard()
 {
@@ -237,7 +279,7 @@ int main()
             saveGame(fileName);
             continue;
         }
-        else if (choice == 'L'||choice == 'l')
+        else if (choice == 'L'||choice =='l')
         {
             string fileName;
             cout << "Enter the file name to load the game: ";
