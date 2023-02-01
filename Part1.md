@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+Please provide the YouTube link to your [Video Demo](https://youtu.be/x4x--XBjtP4).
 
 ## Minimum Requirements
 
@@ -44,13 +44,14 @@ Describe the additional features that has been implemented.
 2. Game Board clearing.
 3. Documentation 
 4. Implement Pause function.
+5. Recordings.
 
 ### Chan Yeng Hui
 
 1. Game Board Design.
 2. Check alien and zombie functions.
 3. Main display function.
-4. Recordings.
+4. 
 ### Wong Wai Yee
 
 1. Implement Alien movement function.

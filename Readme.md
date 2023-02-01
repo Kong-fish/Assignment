@@ -10,7 +10,7 @@ The player will use simple command such as up(^), down(v), left(<) and right(>) 
 
 You may add one signature screenshot of your program here or above the title. Check out [this tutorial](https://www.digitalocean.com/community/tutorials/markdown-markdown-images) to learn how to do it.
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+Please provide the YouTube link to your [Video Demo](https://youtu.be/x4x--XBjtP4).
 
 ## Compilation Instructions
 
