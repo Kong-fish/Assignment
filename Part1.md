@@ -43,14 +43,14 @@ Describe the additional features that has been implemented.
 1. Game Board generation.
 2. Game Board clearing.
 3. Documentation 
-4. Video Recordings
+4. Implement Pause function.
 
 ### Chan Yeng Hui
 
 1. Game Board Design.
 2. Check alien and zombie functions.
 3. Main display function.
-4. Implement Pause function.
+4. Recordings.
 ### Wong Wai Yee
 
 1. Implement Alien movement function.
