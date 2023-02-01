@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
-#include "pf/helper.h"
+#include "pf/helper.cpp"
 using namespace std;
 
 const int MAX_ROWS = 100;
