@@ -1,9 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include "helper.h"
 #include <cstdlib>
-#include "pf/helper.h"
+#include "header1.h"
 using namespace std;
 
 const int MAX_ROWS = 100;
@@ -17,45 +16,6 @@ int numZombies;
 
 // Game Board settings
 int numRows, numCols;
-
-namespace pf
-{
-    const int kRows = 3;
-    const int kColumns = 5;
-    char kBoard[kRows][kColumns];
-
-    int ClearScreen()
-    {
-        #if defined(_WIN32)
-            return std::system("cls");
-        #elif defined(__linux__) || defined(__APPLE__)
-            return std::system("clear");
-        #endif
-    }
-
-    int Pause()
-    {
-        #if defined(_WIN32)
-            return std::system("pause");
-        #elif defined(__linux__) || defined(__APPLE__)
-            return std::system(R"(read -p "Press any key to continue . . . " dummy)");
-        #endif
-    }
-}
-void gamePause()
-{
-    cout << "Pausing Now" << endl;
-    pf::Pause();
-    cout << endl;
-}
-
-void gameClearScreen()
-{
-    cout << "Pausing and Clearing Screen Now" << endl;
-    pf::Pause();
-    pf::ClearScreen();
-    cout << endl;
-}
 
 void initializeBoard()
 {
@@ -93,7 +53,7 @@ void displayBoard()
     for (int i = 0; i < numRows; ++i)
     {
         // display upper border of the row
-        cout << "  ";
+        cout << "   ";
         for (int j = 0; j < numRows; ++j)
         {
             cout << "+-";
@@ -101,7 +61,7 @@ void displayBoard()
         cout << "+" << endl;
 
         // display row number
-        cout << setw(2) << (i+1);
+        cout << setw(2) << (i+1)<<" ";
 
         // display cell content and border of each column
         for (int j = 0; j < numRows; ++j)
@@ -111,14 +71,14 @@ void displayBoard()
         cout << "|" << endl;
     }
     // display lower border of the last row
-    cout << "  ";
+    cout << "   ";
     for (int j = 0; j < numRows; ++j)
     {
         cout << "+-";
     }
     cout << "+" << endl;
     // display column number
-    cout << " ";
+    cout << "    ";
     for (int j = 0; j < numCols; ++j)
     {
         int digit = (j + 1) / 10;
@@ -129,7 +89,7 @@ void displayBoard()
             cout << digit;
     }
     cout << endl;
-    cout << "  ";
+    cout << "   ";
     for (int j = 0; j < numCols; ++j)
     {
         cout << " " << (j + 1) % 10;
@@ -139,6 +99,7 @@ void displayBoard()
 
 void moveAlien(int x, int y)
 {
+    //make sure Alien always stay in game board
     if (x < 0 || x >= numRows || y < 0 || y >= numCols)
     {
         cout << "Invalid move." << endl;
@@ -206,6 +167,21 @@ void loadGame(string fileName)
     }
     inFile.close();
     cout << "Game loaded successfully." << endl;
+}
+
+void gamePause()
+{
+    cout << "Pausing Now" << endl;
+    pf::Pause();
+    cout << endl;
+}
+
+void gameClearScreen()
+{
+    cout << "Pausing and Clearing Screen Now" << endl;
+    pf::Pause();
+    pf::ClearScreen();
+    cout << endl;
 }
 
 int main()
@@ -294,6 +270,7 @@ int main()
         }
 
         moveAlien(x, y);
+        gameClearScreen();
         displayBoard();
     }
 
