@@ -125,6 +125,21 @@ void moveAlien(int x, int y)
     board[alienX][alienY] = 'A';
 }
 
+void zombieMovement()
+{   int x, y;
+
+    x = zombieX + rand()%2*2-1;
+    y = zombieY + rand()%2*2-1;
+   
+   if( x<0 || x>numRows || y<0 || y>numCols)
+   { return; }
+
+    zombieX = x;
+    zombieY = y;
+    board[zombieX][zombieY] = 'Z';
+    
+}
+
 void saveGame(string fileName)
 {
     ofstream outFile(fileName);
