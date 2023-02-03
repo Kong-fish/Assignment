@@ -140,6 +140,10 @@ void zombieMovement()
     
 }
 
+void zombieAttack()
+// int range
+// range = rand()%numRows*1/3
+    
 void saveGame(string fileName)
 {
     ofstream outFile(fileName);
