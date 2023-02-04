@@ -141,8 +141,61 @@ void zombieMovement()
 }
 
 void zombieAttack()
-// int range
-// range = rand()%numRows*1/3
+{
+    int rangeX, rangeY;
+    rangeX = rand() % (numRows/3) + 1; //vertical range of attack is a randNum between 0 and 1/3 of the board rows
+    rangeY = rand() % (numCols/3) + 1; //horizontal range of attack is a randNum between 0 and 1/3 of the board columns
+
+    for (int i = zombieX; i <= (zombieX + rangeX); i++) //check the space below the zombie
+    {   if (board[i][zombieY] == ' ')
+        {
+            continue;
+        }
+        else if (board[i][zombieY] == 'A')
+        {
+            board[i][zombieY] = ' '; //kill Alien
+            break;
+        }
+    }
+    for (int x = zombieX - rangeX; x < zombieX; x++) //check the space above the zombie
+    {   if (board[x][zombieY] == ' ')
+        {
+            continue;
+        }
+        else if (board[x][zombieY] == 'A')
+        {
+            board[x][zombieY] = ' '; //kill Alien
+            break;
+        }
+    }
+        
+    for (int j = zombieY; j <= (zombieY + rangeY); j++) //check the space to the right of the zombie
+    {
+
+        if (board[zombieX][j] == ' ')
+        { continue; }
+
+        else if (board[zombieX][j] == 'A')
+        {
+            board[zombieX][j] = ' '; //kill Alien
+            break;
+        }
+    }
+
+    for (int y = zombieY - rangeY; y < zombieY; y++) //check the space to the left of the zombie
+    {
+
+        if (board[zombieX][y] == ' ')
+        { continue; }
+
+        else if (board[zombieX][y] == 'A')
+        {
+            board[zombieX][y] = ' '; //kill Alien
+            break;
+        }
+    }
+}
+
     
 void saveGame(string fileName)
 {
