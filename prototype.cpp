@@ -38,7 +38,7 @@ void initializeBoard()
         int x, y;
         do
         {
-            zonbieX = rand() % numRows;
+            zombieX = rand() % numRows;
             zombieY = rand() % numCols;
         } while (board[zombieX][zombieY] != ' ');
         board[zombieX][zombieY] = 'Z';
