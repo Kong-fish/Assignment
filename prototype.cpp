@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <iomanip>
-#include <cstdlib>
+#include <iomanip> //for setw()
+#include <cstdlib> 
 #include "pf/helper.cpp"
 using namespace std;
 
@@ -17,6 +17,56 @@ int numZombies;
 
 // Game Board settings
 int numRows, numCols;
+
+void defaultGameSettings()
+{
+    int defRows = 5;
+    int defCols = 9;
+    int defZombies = 1;
+
+    cout << "Default Game Settings" << endl;
+    cout << "-----------------------" << endl;
+    cout << "Board Rows    : " << defRows << endl;
+    cout << "Board Colums  : " << defCols << endl;
+    cout << "Zombie Count  : " << defZombies << endl;
+
+    char gameSetChange;
+    cout << "Do you wish to change the game settings (y/n)? => ";
+    cin >> gameSetChange;
+    
+    if (gameSetChange == 'N' || gameSetChange == 'n')
+    {
+        numRows=defRows;
+        numCols=defCols;
+        numZombies=defZombies;
+    }
+    else
+    {
+        cout << "Enter the number of rows for the game board (odd number): ";
+        cin >> numRows;
+        while (numRows % 2 == 0)
+        {
+            cout << "Number of rows must be an odd number. Please enter again: ";
+            cin >> numRows;
+        }
+
+        cout << "Enter the number of columns for the game board (odd number): ";
+        cin >> numCols;
+        while (numCols % 2 == 0)
+        {
+            cout << "Number of columns must be an odd number. Please enter again: ";
+            cin >> numCols;
+        }
+
+        cout << "Enter the number of Zombies on the board: ";
+        cin >> numZombies;
+        while (numZombies > (numRows * numCols) - 1)
+        {
+            cout << "Too many Zombies for the board size. Please re-enter again: ";
+            cin >> numZombies;
+        }
+    }
+}
 
 void initializeBoard()
 {
@@ -48,14 +98,14 @@ void initializeBoard()
 
 void displayBoard()
 {
-    // system("cls") to initialize?
+    
     cout << " . : Alien vs Zombie : ." << endl;
     // for each row
     for (int i = 0; i < numRows; ++i)
     {
         // display upper border of the row
         cout << "   ";
-        for (int j = 0; j < numRows; ++j)
+        for (int j = 0; j < numCols; ++j)
         {
             cout << "+-";
         }
@@ -65,7 +115,7 @@ void displayBoard()
         cout << setw(2) << (i+1)<<" ";
 
         // display cell content and border of each column
-        for (int j = 0; j < numRows; ++j)
+        for (int j = 0; j < numCols; ++j)
         {
             cout << "|" << board[i][j];
         }
@@ -73,7 +123,7 @@ void displayBoard()
     }
     // display lower border of the last row
     cout << "   ";
-    for (int j = 0; j < numRows; ++j)
+    for (int j = 0; j < numCols; ++j)
     {
         cout << "+-";
     }
@@ -262,30 +312,7 @@ int main()
     srand(time(0));
 
     cout << "Welcome to Alien vs Zombie!" << endl;
-    cout << "Enter the number of rows for the game board (odd number): ";
-    cin >> numRows;
-    while (numRows % 2 == 0)
-    {
-        cout << "Number of rows must be an odd number. Please enter again: ";
-        cin >> numRows;
-    }
-
-    cout << "Enter the number of columns for the game board (odd number): ";
-    cin >> numCols;
-    while (numCols % 2 == 0)
-    {
-        cout << "Number of columns must be an odd number. Please enter again: ";
-        cin >> numCols;
-    }
-
-    cout << "Enter the number of Zombies on the board: ";
-    cin >> numZombies;
-    while (numZombies > (numRows * numCols) - 1)
-    {
-        cout << "Too many Zombies for the board size. Please re-enter again: ";
-        cin >> numZombies;
-    }
-
+    defaultGameSettings();
     initializeBoard();
     displayBoard();
 
