@@ -11,6 +11,7 @@ char board[MAX_ROWS][MAX_COLS];
 
 // Alien and Zombie variables
 int alienX, alienY;
+int zombieX, zombieY;
 int zombies[MAX_ROWS * MAX_COLS];
 int numZombies;
 
@@ -37,10 +38,10 @@ void initializeBoard()
         int x, y;
         do
         {
-            x = rand() % numRows;
-            y = rand() % numCols;
-        } while (board[x][y] != ' ');
-        board[x][y] = 'Z';
+            zonbieX = rand() % numRows;
+            zombieY = rand() % numCols;
+        } while (board[zombieX][zombieY] != ' ');
+        board[zombieX][zombieY] = 'Z';
     
     }
 }
@@ -342,6 +343,8 @@ int main()
         }
 
         moveAlien(x, y);
+        zombieMovement();
+        zombieAttack();
         gameClearScreen();
         displayBoard();
     }
