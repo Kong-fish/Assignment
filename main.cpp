@@ -1,12 +1,12 @@
-// ********************************************************* 
-// Course: TCP1101 PROGRAMMING FUNDAMENTALS 
-// Year: Trimester 1, 2022/23 (T2215) 
-// Lab: TT3L 
-// Names: KONG XIN YU | CHAN YENG HUI | WONG WAI YEE 
-// IDs: 1221303689 | 1221303663 | 1221303660 
-// Emails: 1221303689@student.mmu.edu.my | 1221303663@student.mmu.edu.my | 1221303660@student.mmu.edu.my 
-// Phones: 0162070751 | 0194759378 | 0129342913 
-// ********************************************************* 
+// *********************************************************
+// Course: TCP1101 PROGRAMMING FUNDAMENTALS
+// Year: Trimester 1, 2022/23 (T2215)
+// Lab: TT3L
+// Names: KONG XIN YU | CHAN YENG HUI | WONG WAI YEE
+// IDs: 1221303689 | 1221303663 | 1221303660
+// Emails: 1221303689@student.mmu.edu.my | 1221303663@student.mmu.edu.my | 1221303660@student.mmu.edu.my
+// Phones: 0162070751 | 0194759378 | 0129342913
+// *********************************************************
 
 #include <iostream>
 #include <fstream>
@@ -29,16 +29,52 @@ int numRows, numCols;
 
 void defaultGameSettings()
 {
-    int defRows=5;
-    int defCols=9;
-    int defZombies=1;
+    int defRows = 5;
+    int defCols = 5;
+    int defZombies = 1;
 
-    cout<<"Default Game Settings"<<endl;
-    cout<<"-----------------------"<<endl;
-    cout<<"Board Rows    : "<<defRows<<endl;
-    cout<<"Board Colums  : "<<defCols<<endl;
-    cout<<"Zombie Count  : "<<defZombies<<endl;
+    cout << "Default Game Settings" << endl;
+    cout << "-----------------------" << endl;
+    cout << "Board Rows    : " << defRows << endl;
+    cout << "Board Colums  : " << defCols << endl;
+    cout << "Zombie Count  : " << defZombies << endl;
 
+    char gameSetChange;
+    cout << "Do you wish to change the game settings (y/n)? => ";
+    cin >> gameSetChange;
+
+    if (gameSetChange == 'N' || gameSetChange == 'n')
+    {
+        numRows=defRows;
+        numCols=defCols;
+        numZombies=defZombies;
+    }
+    else
+    {
+        cout << "Enter the number of rows for the game board (odd number): ";
+        cin >> numRows;
+        while (numRows % 2 == 0)
+        {
+            cout << "Number of rows must be an odd number. Please enter again: ";
+            cin >> numRows;
+        }
+
+        cout << "Enter the number of columns for the game board (odd number): ";
+        cin >> numCols;
+        while (numCols % 2 == 0)
+        {
+            cout << "Number of columns must be an odd number. Please enter again: ";
+            cin >> numCols;
+        }
+
+        cout << "Enter the number of Zombies on the board: ";
+        cin >> numZombies;
+        while (numZombies > (numRows * numCols) - 1)
+        {
+            cout << "Too many Zombies for the board size. Please re-enter again: ";
+            cin >> numZombies;
+        }
+    }
 }
 
 void initializeBoard()
@@ -65,13 +101,11 @@ void initializeBoard()
             y = rand() % numCols;
         } while (board[x][y] != ' ');
         board[x][y] = 'Z';
-    
     }
 }
 
 void displayBoard()
 {
-    // system("cls") to initialize?
     cout << " . : Alien vs Zombie : ." << endl;
     // for each row
     for (int i = 0; i < numRows; ++i)
@@ -85,7 +119,7 @@ void displayBoard()
         cout << "+" << endl;
 
         // display row number
-        cout << setw(2) << (i+1)<<" ";
+        cout << setw(2) << (i + 1) << " ";
 
         // display cell content and border of each column
         for (int j = 0; j < numRows; ++j)
@@ -123,7 +157,7 @@ void displayBoard()
 
 void moveAlien(int x, int y)
 {
-    //make sure Alien always stay in game board
+    // make sure Alien always stay in game board
     if (x < 0 || x >= numRows || y < 0 || y >= numCols)
     {
         cout << "Invalid move." << endl;
@@ -214,33 +248,6 @@ int main()
 
     cout << "Welcome to Alien vs Zombie!" << endl;
     defaultGameSettings();
-    char gameSetChange;
-    cout<<"Do you wish to change the game settings (y/n)? => ";
-    cin >> gameSetChange;
-    cout << "Enter the number of rows for the game board (odd number): ";
-    cin >> numRows;
-    while (numRows % 2 == 0)
-    {
-        cout << "Number of rows must be an odd number. Please enter again: ";
-        cin >> numRows;
-    }
-
-    cout << "Enter the number of columns for the game board (odd number): ";
-    cin >> numCols;
-    while (numCols % 2 == 0)
-    {
-        cout << "Number of columns must be an odd number. Please enter again: ";
-        cin >> numCols;
-    }
-
-    cout << "Enter the number of Zombies on the board: ";
-    cin >> numZombies;
-    while (numZombies > (numRows * numCols) - 1)
-    {
-        cout << "Too many Zombies for the board size. Please re-enter again: ";
-        cin >> numZombies;
-    }
-
     initializeBoard();
     displayBoard();
 
@@ -251,31 +258,31 @@ int main()
         cout << "Enter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load): ";
         cin >> choice;
 
-        if (choice == 'W'|| choice == 'w')
+        if (choice == 'W' || choice == 'w')
         {
             x = alienX - 1;
             y = alienY;
         }
-        else if (choice == 'A'|| choice =='a')
+        else if (choice == 'A' || choice == 'a')
         {
             x = alienX;
             y = alienY - 1;
         }
-        else if (choice == 'S'|| choice == 's')
+        else if (choice == 'S' || choice == 's')
         {
             x = alienX + 1;
             y = alienY;
         }
-        else if (choice == 'D'|| choice == 'd')
+        else if (choice == 'D' || choice == 'd')
         {
             x = alienX;
             y = alienY + 1;
         }
-        else if (choice == 'Q'|| choice == 'q')
+        else if (choice == 'Q' || choice == 'q')
         {
             break;
         }
-        else if (choice == 'V'|| choice == 'v')
+        else if (choice == 'V' || choice == 'v')
         {
             string fileName;
             cout << "Enter the file name to save the game: ";
@@ -283,7 +290,7 @@ int main()
             saveGame(fileName);
             continue;
         }
-        else if (choice == 'L'||choice =='l')
+        else if (choice == 'L' || choice == 'l')
         {
             string fileName;
             cout << "Enter the file name to load the game: ";
