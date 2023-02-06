@@ -12,7 +12,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
-#include "helper.cpp"
+#include "pf/helper.cpp"
 using namespace std;
 
 const int MAX_ROWS = 100;
@@ -26,6 +26,20 @@ int numZombies;
 
 // Game Board settings
 int numRows, numCols;
+
+void defaultGameSettings()
+{
+    int defRows=5;
+    int defCols=9;
+    int defZombies=1;
+
+    cout<<"Default Game Settings"<<endl;
+    cout<<"-----------------------"<<endl;
+    cout<<"Board Rows    : "<<defRows<<endl;
+    cout<<"Board Colums  : "<<defCols<<endl;
+    cout<<"Zombie Count  : "<<defZombies<<endl;
+
+}
 
 void initializeBoard()
 {
@@ -199,6 +213,10 @@ int main()
     srand(time(0));
 
     cout << "Welcome to Alien vs Zombie!" << endl;
+    defaultGameSettings();
+    char gameSetChange;
+    cout<<"Do you wish to change the game settings (y/n)? => ";
+    cin >> gameSetChange;
     cout << "Enter the number of rows for the game board (odd number): ";
     cin >> numRows;
     while (numRows % 2 == 0)
