@@ -65,6 +65,8 @@ void defaultGameSettings()
             cout << "Too many Zombies for the board size. Please re-enter again: ";
             cin >> numZombies;
         }
+        cout << "Settings Updated"<<endl;
+        cout << "Press any key to continue";
     }
 }
 
@@ -313,6 +315,7 @@ int main()
 
     cout << "Welcome to Alien vs Zombie!" << endl;
     defaultGameSettings();
+    gameClearScreen();
     initializeBoard();
     displayBoard();
 
