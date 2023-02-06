@@ -26,10 +26,8 @@ void difficulties()
 
     cout << "Welcome to Alien vs Zombies! XD" << endl;
     cout << "First let choose difficultiy" << endl;
-    cout << "Easy (Rows = 5 ; Coloums = 9 ; Zombies = 1 )" << endl;
-    cout << "Normal (Rows = 9 ; Coloums = 11 ; Zombies = 2 )" << endl;
-    cout << "Hard (Rows = 13 ; Coloums = 15 ; Zombies = 3 )" << endl;
-    cout << "/n Choose Your difficulity to start the game (Easy-E ; Normal-N ; Hard-H)=> ";
+    cout << "Easy (E) || Normal (N) || Hard (H)" << endl;
+    cout << "/n Choose Your difficulity to start the game => ";
     cin >> diff;
 
     switch (diff)
@@ -49,9 +47,9 @@ void difficulties()
 
         case 'H':
         case 'h':
-        Rows = 9;
-        Cols = 11;
-        Zombies = 2;
+        Rows = 13;
+        Cols = 15;
+        Zombies = 3;
     }
 
     defRows=Rows;
