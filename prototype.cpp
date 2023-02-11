@@ -214,79 +214,99 @@ void moveAlien(int x, int y)
 }
 
 void zombieMovement()
-{
-    int x, y;
-
-    x = zombieX + rand() % 2 * 2 - 1;
-    y = zombieY + rand() % 2 * 2 - 1;
-
-    if (x < 0 || x > numRows || y < 0 || y > numCols)
+{   int x, y;
+    int direction;
+    direction = rand() % 4;
+    // zombie move up
+    if ( direction == 0)
     {
-        return;
+        x = zombieX - 1;
+        y = zombieY;
     }
-
-    zombieX = x;
-    zombieY = y;
-    board[zombieX][zombieY] = 'Z';
+    //zombie move down
+    else if ( direction == 1 )
+    {
+        x = zombieX + 1;
+        y = zombieY;
+    }
+    //zombie move left
+    else if ( direction == 1 )
+    {
+        x = zombieX;
+        y = zombieY - 1;
+    }
+    //zombie move right
+    else if ( direction == 1 )
+    {
+        x = zombieX;
+        y = zombieY + 1;
+    }
+   //make sure zombie stays inside the board and the new zombie postion is not occupied by Alien 
+   if( x<0 && x>numRows && y<0 && y>numCols && board[x][y != 'A'])
+   { 
+        zombieX = x;
+        zombieY = y;
+        board[zombieX][zombieY] = 'Z';
+   }
+   //generate a random movement again if new zombie position is outside the board or Alien is in the new position
+   else
+   {
+        zombieMovement();
+   }
+    
 }
 
 void zombieAttack()
 {
     int rangeX, rangeY;
-    rangeX = rand() % (numRows / 3) + 1; // vertical range of attack is a randNum between 0 and 1/3 of the board rows
-    rangeY = rand() % (numCols / 3) + 1; // horizontal range of attack is a randNum between 0 and 1/3 of the board columns
+    rangeX = rand() % (numRows/3) + 1; //vertical range of attack is a randNum between 0 and 1/3 of the board rows
+    rangeY = rand() % (numCols/3) + 1; //horizontal range of attack is a randNum between 0 and 1/3 of the board columns
 
-    for (int i = zombieX; i <= (zombieX + rangeX); i++) // check the space below the zombie
-    {
-        if (board[i][zombieY] == ' ')
+    for (int i = zombieX; i <= (zombieX + rangeX); i++) //check the space below the zombie
+    {   if (board[i][zombieY] == ' ')
         {
             continue;
         }
         else if (board[i][zombieY] == 'A')
         {
-            board[i][zombieY] = ' '; // kill Alien
+            board[i][zombieY] = ' '; //kill Alien
             break;
         }
     }
-    for (int x = zombieX - rangeX; x < zombieX; x++) // check the space above the zombie
-    {
-        if (board[x][zombieY] == ' ')
+    for (int x = zombieX - rangeX; x < zombieX; x++) //check the space above the zombie
+    {   if (board[x][zombieY] == ' ')
         {
             continue;
         }
         else if (board[x][zombieY] == 'A')
         {
-            board[x][zombieY] = ' '; // kill Alien
+            board[x][zombieY] = ' '; //kill Alien
             break;
         }
     }
-
-    for (int j = zombieY; j <= (zombieY + rangeY); j++) // check the space to the right of the zombie
+        
+    for (int j = zombieY; j <= (zombieY + rangeY); j++) //check the space to the right of the zombie
     {
 
         if (board[zombieX][j] == ' ')
-        {
-            continue;
-        }
+        { continue; }
 
         else if (board[zombieX][j] == 'A')
         {
-            board[zombieX][j] = ' '; // kill Alien
+            board[zombieX][j] = ' '; //kill Alien
             break;
         }
     }
 
-    for (int y = zombieY - rangeY; y < zombieY; y++) // check the space to the left of the zombie
+    for (int y = zombieY - rangeY; y < zombieY; y++) //check the space to the left of the zombie
     {
 
         if (board[zombieX][y] == ' ')
-        {
-            continue;
-        }
+        { continue; }
 
         else if (board[zombieX][y] == 'A')
         {
-            board[zombieX][y] = ' '; // kill Alien
+            board[zombieX][y] = ' '; //kill Alien
             break;
         }
     }
