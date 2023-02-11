@@ -230,13 +230,13 @@ void zombieMovement()
         y = zombieY;
     }
     //zombie move left
-    else if ( direction == 1 )
+    else if ( direction == 2 )
     {
         x = zombieX;
         y = zombieY - 1;
     }
     //zombie move right
-    else if ( direction == 1 )
+    else if ( direction == 3 )
     {
         x = zombieX;
         y = zombieY + 1;
