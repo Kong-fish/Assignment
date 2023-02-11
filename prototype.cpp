@@ -242,7 +242,7 @@ void zombieMovement()
         y = zombieY + 1;
     }
    //make sure zombie stays inside the board and the new zombie postion is not occupied by Alien 
-   if( x<0 && x>numRows && y<0 && y>numCols && board[x][y != 'A'])
+   if( x<0 && x>numRows && y<0 && y>numCols && board[x][y] != 'A')
    { 
         zombieX = x;
         zombieY = y;
