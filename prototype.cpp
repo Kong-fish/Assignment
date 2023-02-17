@@ -111,9 +111,14 @@ void defaultGameSettings()
     }
 }
 
+char getObject(int x, int y) 
+{
+    return board[y - 1][x - 1];
+}
+
 void Gameobj()
 {
-    char objects[] = { 'v', '^', '<', '>', 'h', 'p', 'r'};
+    char objects[] = {' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'v', '^', '<', '>', 'h', 'p', 'r'};
     int noOfObjects = 20; // number of game objects and empty spaces in the array
 
     // put game objects randomly in empty spaces on the board
@@ -128,6 +133,8 @@ void Gameobj()
             }
         }
     }
+
+    
     
 }
 
