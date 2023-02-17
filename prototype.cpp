@@ -19,6 +19,12 @@ int numZombies;
 int numRows, numCols;
 int defRows, defCols, defZombies;
 
+// Attributes
+const int MAX_LIFE = 500;
+const int MAX_ATTACK = 50;
+int alienLifeAttr, alienAttackAttr;
+int zombieLifeAttr[MAX_ROWS * MAX_COLS], zombieAttackAttr[MAX_ROWS * MAX_COLS];
+
 void difficulties()
 {
     char diff;
@@ -140,6 +146,9 @@ void initializeBoard()
     alienX = numRows / 2;
     alienY = numCols / 2;
     board[alienX][alienY] = 'A';
+    // Initialize Alien attributes
+    alienLifeAttr = (rand() % (MAX_LIFE / 5) + 1) * 5;
+    alienAttackAttr = 0;
     // Place Zombies randomly on board
     for (int i = 0; i < numZombies; i++)
     {
@@ -150,6 +159,9 @@ void initializeBoard()
             zombieY = rand() % numCols;
         } while (board[zombieX][zombieY] != ' ');
         board[zombieX][zombieY] = 'Z';
+    //Initialize Zombie attributes
+        zombieLifeAttr[i] = (rand() % (MAX_LIFE / 5) + 1) * 5;
+        zombieAttackAttr[i] = (rand() % (MAX_ATTACK / 5) + 1) * 5;
     }
     //Place game objects randomly on the board
     createGameobj();
@@ -205,6 +217,15 @@ void displayBoard()
         cout << " " << (j + 1) % 10;
     }
     cout << endl;
+}
+
+void displayAttr()
+{
+    cout << "Alien    : Life  " << alienLifeAttr << ", Attack  "  << alienAttackAttr << endl;
+    for (int i = 0; i < numZombies; i++)
+    {
+        cout << "Zombie " << i << ": Life  " << zombieLifeAttr[i] << ", Attack  " << zombieAttackAttr[i] << endl;
+    }
 }
 
 void moveAlien(int x, int y)
@@ -401,6 +422,7 @@ int main()
     gameClearScreen();
     initializeBoard();
     displayBoard();
+    displayAttr();
 
     char choice;
     int x, y;
