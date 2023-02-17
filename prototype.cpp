@@ -106,6 +106,26 @@ void defaultGameSettings()
     }
 }
 
+void createGameobj()
+{
+    char objects[] = {' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'v', '^', '<', '>', 'h', 'p', 'r'};
+    int noOfObjects = 20; // number of game objects and empty spaces in the array
+
+    // put game objects randomly in empty spaces on the board
+    for (int i = 0; i < numRows; ++i)
+    {
+        for (int j = 0; j < numCols; ++j)
+        {
+        if ( board[i][j] == ' ')
+            {
+            int objNo = rand() % noOfObjects;
+            board[i][j] = objects[objNo];
+            }
+        }
+    }
+    
+}
+
 void initializeBoard()
 {
     // Clear board
@@ -131,6 +151,8 @@ void initializeBoard()
         } while (board[zombieX][zombieY] != ' ');
         board[zombieX][zombieY] = 'Z';
     }
+    //Place game objects randomly on the board
+    createGameobj();
 }
 
 void displayBoard()
