@@ -31,9 +31,8 @@ void difficulties()
     int Rows,Cols,Zombies;
 
     cout << "Welcome to Alien vs Zombies! XD" << endl;
-    cout << "First let choose difficultiy" << endl;
-    cout << "Easy (E) || Normal (N) || Hard (H)" << endl;
-    cout << "/n Choose Your difficulity to start the game => ";
+    cout << "\nFirst let choose difficultiy : Easy (E) || Normal (N) || Hard (H)" << endl;
+    cout << "\n Choose Your difficulity to start the game => ";
     cin >> diff;
 
     switch (diff)
@@ -66,14 +65,14 @@ void difficulties()
 void defaultGameSettings()
 {
 
-    cout << "Default Game Settings" << endl;
+    cout << "\nDefault Game Settings" << endl;
     cout << "-----------------------" << endl;
     cout << "Board Rows    : " << defRows << endl;
     cout << "Board Colums  : " << defCols << endl;
     cout << "Zombie Count  : " << defZombies << endl;
 
     char gameSetChange;
-    cout << "Do you wish to change the game settings (y/n)? => ";
+    cout << "\nDo you wish to change the game settings (y/n)? => ";
     cin >> gameSetChange;
 
     if (gameSetChange == 'N' || gameSetChange == 'n')
@@ -428,7 +427,7 @@ int main()
     int x, y;
     while (true)
     {
-        cout << "Enter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load): ";
+        cout << "\nEnter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load): ";
         cin >> choice;
 
         if (choice == 'W' || choice == 'w')
