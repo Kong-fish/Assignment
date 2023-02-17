@@ -24,8 +24,12 @@ g++ main.cpp folder1\code.cpp folder2\code.cpp ......
 
 ## User Manual
 
-First, generation of game board. Player is able to generate the game board according to 
-Player will be controlling the Alien which is 'A' in the game board.
+1. Generation of game board
+User will be choose between three set of default difficulity with different rows and and coloums for game board size. There is also different numbers of zombies that user need to defeat for each difficulity. User can choose between three default which is Easy (Rows = 5, Colums = 9, Zombies = 1), Normal (Rows = 9, Colums = 11, Zombies = 2) and Hard (Rows = 13, Colums = 15, Zombies = 3). User is able to change the default too. 
+
+2. Game Dashboard
+Game board is generated following user input. 
+
 
 ## Progress Log
 
