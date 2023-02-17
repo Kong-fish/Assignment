@@ -30,9 +30,9 @@ void difficulties()
     char diff;
     int Rows,Cols,Zombies;
 
-    cout << "Welcome to Alien vs Zombies! XD" << endl;
+    cout << "Welcome to Alien vs Zombies! " << endl;
     cout << "\nFirst let choose difficultiy : Easy (E) || Normal (N) || Hard (H)" << endl;
-    cout << "\n Choose Your difficulity to start the game => ";
+    cout << "\nChoose Your difficulity to start the game => ";
     cin >> diff;
 
     switch (diff)
@@ -111,9 +111,9 @@ void defaultGameSettings()
     }
 }
 
-void createGameobj()
+void Gameobj()
 {
-    char objects[] = {' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'v', '^', '<', '>', 'h', 'p', 'r'};
+    char objects[] = { 'v', '^', '<', '>', 'h', 'p', 'r'};
     int noOfObjects = 20; // number of game objects and empty spaces in the array
 
     // put game objects randomly in empty spaces on the board
@@ -163,7 +163,7 @@ void initializeBoard()
         zombieAttackAttr[i] = (rand() % (MAX_ATTACK / 5) + 1) * 5;
     }
     //Place game objects randomly on the board
-    createGameobj();
+    Gameobj();
 }
 
 void displayBoard()
