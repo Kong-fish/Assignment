@@ -259,19 +259,6 @@ void moveAlien(int x, int y)
         return;
     }
 
-    if (board[x][y] == 'Z')
-    {
-        cout << "You defeated a Zombie!" << endl;
-        for (int i = 0; i < numZombies; i++)
-        {
-            if (zombies[i] == x * numCols + y)
-            {
-                zombies[i] = -1;
-                break;
-            }
-        }
-    }
-
     board[alienX][alienY] = '.';
     alienX = x;
     alienY = y;
@@ -448,6 +435,7 @@ int main()
 
     char choice;
     int x, y;
+    
     while (true)
     {
         cout << "\nEnter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load, H - help): ";
@@ -467,6 +455,7 @@ int main()
         {
             x = alienX + 1;
             y = alienY;
+            
         }
         else if (choice == 'D' || choice == 'd')
         {
@@ -503,10 +492,9 @@ int main()
             cout << "Invalid choice." << endl;
             continue;
         }
-
-        moveAlien(x, y);
         zombieMovement();
         zombieAttack();
+        moveAlien(x, y);
         gameClearScreen();
         displayBoard();
     }
