@@ -266,11 +266,12 @@ void moveAlien(int x, int y)
 }
 
 void zombieMovement()
-{   int x, y;
-    int direction;
-    direction = rand() % 4;
+{
+    int x = 0;
+    int y = 0;
+    int direction = rand() % 4;
     // zombie move up
-    if ( direction == 0)
+    if (direction == 0)
     {
         x = zombieX - 1;
         y = zombieY;
@@ -294,17 +295,18 @@ void zombieMovement()
         y = zombieY + 1;
     }
    //make sure zombie stays inside the board and the new zombie postion is not occupied by Alien 
-   if( x<0 && x>numRows && y<0 && y>numCols && board[x][y] != 'A')
-   { 
+    if( (x>0) && (x<numRows) && (y>0) && (y<numCols) && (board[x][y] != 'A'))
+    { 
+        board[zombieX][zombieY] = ' ';
         zombieX = x;
         zombieY = y;
         board[zombieX][zombieY] = 'Z';
-   }
+    }
    //generate a random movement again if new zombie position is outside the board or Alien is in the new position
-   else
-   {
+    else
+    {
         zombieMovement();
-   }
+    }
     
 }
 
