@@ -406,6 +406,8 @@ void loadGame(string fileName)
     }
     inFile.close();
     cout << "Game loaded successfully." << endl;
+    pf::Pause();
+    pf::ClearScreen();
 }
 
 void gamePause()

@@ -38,12 +38,24 @@ User can choose between three default which is
 :Normal (Rows = 9, Colums = 11, Zombies = 2) 
 :Hard (Rows = 13, Colums = 15, Zombies = 3). 
 User is able to change the default settings of the game board too. 
+Player are able to move around the generated game board. Invalid input will shown if the player move the Alien out of bounds. Zombie will also move randomly in the game board.
 
-2. Game board
-Game board is generated following user input. Alien (A) and Zombie (Z) will be the game object of this game. Player are able to move around the generated game board. Invalid input will shown if the player move the Alien out of bounds. Zombie will also move randomly in the game board. 
-There are mulitiple 
+2. Game Character and Game Objects
+Alien (A) is the character that player able to control.
+Zombie (Z) will be the non-player character that player need to defeat by passing around the zombies.
+Rock (r) is an obstacle object that will block the Alien path. It will turn into another game object after Alien bumping into the rock.
+Arrow (^,v,<,>) is game objects that that allow Alien to change its path.
 
-
+3. Player Input
+Player able to input lower or uppercase of the alphabet symbolize each input.
+W key will be moving Alien up.
+A key will be moving Alien to the left
+D key will be moving Alien to the right.
+S key will be moving Alien to the bottom
+Q key will let player to end the game.
+V key will let the player to save it game.
+L key will let player load previous game file.
+H key will display the Player Input explaination.
 
 ## Progress Log
 
