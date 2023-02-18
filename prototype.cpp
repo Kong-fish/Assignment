@@ -133,8 +133,6 @@ void Gameobj()
             }
         }
     }
-
-    
     
 }
 
@@ -171,6 +169,24 @@ void initializeBoard()
     }
     //Place game objects randomly on the board
     Gameobj();
+}
+void displayBoard();
+void Help()
+{
+    char input;
+    cout << "\nCommands";
+    cout << "\n w        - Move up.";
+    cout << "\n s        - Move down.";
+    cout << "\n a        - Move left.";
+    cout << "\n s        - Move right.";
+    cout << "\n help     - Display user commands explainations.";
+    cout << "\n v        - Save the game.";
+    cout << "\n l        - Load previous game.";
+    cout << "\nq         - Quit game.\n";
+    cout << "\n Press any key to continue your game.";
+    cin >> input;
+    pf::ClearScreen();
+    displayBoard();
 }
 
 void displayBoard()
@@ -434,7 +450,7 @@ int main()
     int x, y;
     while (true)
     {
-        cout << "\nEnter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load): ";
+        cout << "\nEnter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load, H - help): ";
         cin >> choice;
 
         if (choice == 'W' || choice == 'w')
@@ -475,6 +491,11 @@ int main()
             cout << "Enter the file name to load the game: ";
             cin >> fileName;
             loadGame(fileName);
+            continue;
+        }
+        else if (choice=='H'||choice=='h')
+        {
+            Help();
             continue;
         }
         else
