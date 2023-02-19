@@ -60,14 +60,16 @@ void difficulties()
         case 'M':
         case 'm':
         Rows = 9;
-        Cols = 11;
+        Cols = 9;
         Zombies = 2;
+        break;
 
         case 'H':
         case 'h':
         Rows = 13;
         Cols = 15;
         Zombies = 3;
+        break;
     }
 
     defRows=Rows;
