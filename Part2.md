@@ -70,5 +70,5 @@ Describe the problems encountered and provide the solutions / plan for the solut
 > Solution: Zombie movement have for loop error.Redefine and make sure it loop.
 
 3.Trouble displaying life of zombies/alien.
-> Solution: Redefine value
+> Solution: syntax error and succeeded in displaying
 
