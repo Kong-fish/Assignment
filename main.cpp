@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <iomanip>
+#include <iomanip> //for setw()
 #include <cstdlib>
 #include "pf/helper.cpp"
 using namespace std;
@@ -21,33 +21,78 @@ char board[MAX_ROWS][MAX_COLS];
 
 // Alien and Zombie variables
 int alienX, alienY;
+int zombieX, zombieY;
 int zombies[MAX_ROWS * MAX_COLS];
 int numZombies;
 
 // Game Board settings
 int numRows, numCols;
+int defRows, defCols, defZombies;
 
+// Attributes
+const int MAX_LIFE = 500;
+const int MAX_ATTACK = 50;
+int alienLifeAttr, alienAttackAttr;
+int zombieLifeAttr[MAX_ROWS * MAX_COLS], zombieAttackAttr[MAX_ROWS * MAX_COLS];
+
+//Game Objeact
+int noOfObjects;
+
+void difficulties()
+{
+    char diff;
+    int Rows,Cols,Zombies;
+
+    cout << "Welcome to Alien vs Zombies! " << endl;
+    cout << "\nFirst let choose difficultiy : Easy (E) || Normal (N) || Hard (H)" << endl;
+    cout << "\nChoose Your difficulity to start the game => ";
+    cin >> diff;
+
+    switch (diff)
+    {
+        case 'E':
+        case 'e':
+        Rows = 5;
+        Cols = 9;
+        Zombies = 1;
+        break;
+
+        case 'N':
+        case 'n':
+        Rows = 9;
+        Cols = 11;
+        Zombies = 2;
+
+        case 'H':
+        case 'h':
+        Rows = 13;
+        Cols = 15;
+        Zombies = 3;
+    }
+
+    defRows=Rows;
+    defCols=Cols;
+    defZombies=Zombies;
+
+}
 void defaultGameSettings()
 {
-    int defRows = 5;
-    int defCols = 5;
-    int defZombies = 1;
 
-    cout << "Default Game Settings" << endl;
+    cout << "\nDefault Game Settings" << endl;
     cout << "-----------------------" << endl;
     cout << "Board Rows    : " << defRows << endl;
     cout << "Board Colums  : " << defCols << endl;
     cout << "Zombie Count  : " << defZombies << endl;
 
     char gameSetChange;
-    cout << "Do you wish to change the game settings (y/n)? => ";
+    cout << "\nDo you wish to change the game settings (y/n)? => ";
     cin >> gameSetChange;
 
     if (gameSetChange == 'N' || gameSetChange == 'n')
     {
-        numRows=defRows;
-        numCols=defCols;
-        numZombies=defZombies;
+        numRows = defRows;
+        numCols = defCols;
+        numZombies = defZombies;
     }
     else
     {
@@ -74,7 +119,29 @@ void defaultGameSettings()
             cout << "Too many Zombies for the board size. Please re-enter again: ";
             cin >> numZombies;
         }
+        cout << "Settings Updated" << endl;
+        cout << "Press any key to continue";
     }
+}
+
+void Gameobj()
+{
+    char objects[] = {' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'v', '^', '<', '>', 'h', 'p', 'r'};
+    int noOfObjects = 20; // number of game objects and empty spaces in the array
+
+    // put game objects randomly in empty spaces on the board
+    for (int i = 0; i < numRows; ++i)
+    {
+        for (int j = 0; j < numCols; ++j)
+        {
+        if ( board[i][j] == ' ')
+            {
+            int objNo = rand() % noOfObjects;
+            board[i][j] = objects[objNo];
+            }
+        }
+    }
+    
 }
 
 void initializeBoard()
@@ -91,28 +158,57 @@ void initializeBoard()
     alienX = numRows / 2;
     alienY = numCols / 2;
     board[alienX][alienY] = 'A';
+    // Initialize Alien attributes
+    alienLifeAttr = (rand() % (MAX_LIFE / 5) + 1) * 5;
+    alienAttackAttr = 0;
     // Place Zombies randomly on board
     for (int i = 0; i < numZombies; i++)
     {
         int x, y;
         do
         {
-            x = rand() % numRows;
-            y = rand() % numCols;
-        } while (board[x][y] != ' ');
-        board[x][y] = 'Z';
+            zombieX = rand() % numRows;
+            zombieY = rand() % numCols;
+        } while (board[zombieX][zombieY] != ' ');
+        board[zombieX][zombieY] = 'Z';
+    //Initialize Zombie attributes
+        zombieLifeAttr[i] = (rand() % (MAX_LIFE / 5) + 1) * 5;
+        zombieAttackAttr[i] = (rand() % (MAX_ATTACK / 5) + 1) * 5;
     }
+    //Place game objects randomly on the board
+    Gameobj();
+}
+
+void displayBoard();
+
+void Help()
+{
+    char input;
+    cout << "\nCommands";
+    cout << "\n w        - Move up.";
+    cout << "\n s        - Move down.";
+    cout << "\n a        - Move left.";
+    cout << "\n s        - Move right.";
+    cout << "\n help     - Display user commands explainations.";
+    cout << "\n v        - Save the game.";
+    cout << "\n l        - Load previous game.";
+    cout << "\nq         - Quit game.\n";
+    cout << "\n Press any key to continue your game.";
+    cin >> input;
+    pf::ClearScreen();
+    displayBoard();
 }
 
 void displayBoard()
 {
+
     cout << " . : Alien vs Zombie : ." << endl;
     // for each row
     for (int i = 0; i < numRows; ++i)
     {
         // display upper border of the row
         cout << "   ";
-        for (int j = 0; j < numRows; ++j)
+        for (int j = 0; j < numCols; ++j)
         {
             cout << "+-";
         }
@@ -122,7 +218,7 @@ void displayBoard()
         cout << setw(2) << (i + 1) << " ";
 
         // display cell content and border of each column
-        for (int j = 0; j < numRows; ++j)
+        for (int j = 0; j < numCols; ++j)
         {
             cout << "|" << board[i][j];
         }
@@ -130,7 +226,7 @@ void displayBoard()
     }
     // display lower border of the last row
     cout << "   ";
-    for (int j = 0; j < numRows; ++j)
+    for (int j = 0; j < numCols; ++j)
     {
         cout << "+-";
     }
@@ -155,6 +251,15 @@ void displayBoard()
     cout << endl;
 }
 
+void displayAttr()
+{
+    cout << "Alien    : Life  " << alienLifeAttr << ", Attack  "  << alienAttackAttr << endl;
+    for (int i = 0; i < numZombies; i++)
+    {
+        cout << "Zombie " << i << ": Life  " << zombieLifeAttr[i] << ", Attack  " << zombieAttackAttr[i] << endl;
+    }
+}
+
 void moveAlien(int x, int y)
 {
     // make sure Alien always stay in game board
@@ -164,23 +269,111 @@ void moveAlien(int x, int y)
         return;
     }
 
-    if (board[x][y] == 'Z')
-    {
-        cout << "You defeated a Zombie!" << endl;
-        for (int i = 0; i < numZombies; i++)
-        {
-            if (zombies[i] == x * numCols + y)
-            {
-                zombies[i] = -1;
-                break;
-            }
-        }
-    }
-
     board[alienX][alienY] = '.';
     alienX = x;
     alienY = y;
     board[alienX][alienY] = 'A';
+}
+
+void zombieMovement()
+{
+    int x = 0;
+    int y = 0;
+    int direction = rand() % 4;
+    // zombie move up
+    if (direction == 0)
+    {
+        x = zombieX - 1;
+        y = zombieY;
+    }
+    //zombie move down
+    else if ( direction == 1 )
+    {
+        x = zombieX + 1;
+        y = zombieY;
+    }
+    //zombie move left
+    else if ( direction == 2 )
+    {
+        x = zombieX;
+        y = zombieY - 1;
+    }
+    //zombie move right
+    else if ( direction == 3 )
+    {
+        x = zombieX;
+        y = zombieY + 1;
+    }
+   //make sure zombie stays inside the board and the new zombie postion is not occupied by Alien 
+    if( (x>0) && (x<numRows) && (y>0) && (y<numCols) && (board[x][y] != 'A'))
+    { 
+        board[zombieX][zombieY] = ' ';
+        zombieX = x;
+        zombieY = y;
+        board[zombieX][zombieY] = 'Z';
+    }
+   //generate a random movement again if new zombie position is outside the board or Alien is in the new position
+    else
+    {
+        zombieMovement();
+    }
+    
+}
+
+void zombieAttack()
+{
+    int rangeX, rangeY;
+    rangeX = rand() % (numRows/3) + 1; //vertical range of attack is a randNum between 0 and 1/3 of the board rows
+    rangeY = rand() % (numCols/3) + 1; //horizontal range of attack is a randNum between 0 and 1/3 of the board columns
+
+    for (int i = zombieX; i <= (zombieX + rangeX); i++) //check the space below the zombie
+    {   if (board[i][zombieY] == ' ')
+        {
+            continue;
+        }
+        else if (board[i][zombieY] == 'A')
+        {
+            board[i][zombieY] = ' '; //kill Alien
+            break;
+        }
+    }
+    for (int x = zombieX - rangeX; x < zombieX; x++) //check the space above the zombie
+    {   if (board[x][zombieY] == ' ')
+        {
+            continue;
+        }
+        else if (board[x][zombieY] == 'A')
+        {
+            board[x][zombieY] = ' '; //kill Alien
+            break;
+        }
+    }
+        
+    for (int j = zombieY; j <= (zombieY + rangeY); j++) //check the space to the right of the zombie
+    {
+
+        if (board[zombieX][j] == ' ')
+        { continue; }
+
+        else if (board[zombieX][j] == 'A')
+        {
+            board[zombieX][j] = ' '; //kill Alien
+            break;
+        }
+    }
+
+    for (int y = zombieY - rangeY; y < zombieY; y++) //check the space to the left of the zombie
+    {
+
+        if (board[zombieX][y] == ' ')
+        { continue; }
+
+        else if (board[zombieX][y] == 'A')
+        {
+            board[zombieX][y] = ' '; //kill Alien
+            break;
+        }
+    }
 }
 
 void saveGame(string fileName)
@@ -225,6 +418,8 @@ void loadGame(string fileName)
     }
     inFile.close();
     cout << "Game loaded successfully." << endl;
+    pf::Pause();
+    pf::ClearScreen();
 }
 
 void gamePause()
@@ -245,17 +440,19 @@ void gameClearScreen()
 int main()
 {
     srand(time(0));
-
-    cout << "Welcome to Alien vs Zombie!" << endl;
+    difficulties();
     defaultGameSettings();
+    gameClearScreen();
     initializeBoard();
     displayBoard();
+    displayAttr();
 
     char choice;
     int x, y;
+    
     while (true)
     {
-        cout << "Enter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load): ";
+        cout << "\nEnter move (W - up, A - left, S - down, D - right, Q - quit, V - save, L - load, H - help): ";
         cin >> choice;
 
         if (choice == 'W' || choice == 'w')
@@ -272,6 +469,7 @@ int main()
         {
             x = alienX + 1;
             y = alienY;
+            
         }
         else if (choice == 'D' || choice == 'd')
         {
@@ -298,12 +496,18 @@ int main()
             loadGame(fileName);
             continue;
         }
+        else if (choice=='H'||choice=='h')
+        {
+            Help();
+            continue;
+        }
         else
         {
             cout << "Invalid choice." << endl;
             continue;
         }
-
+        zombieMovement();
+        zombieAttack();
         moveAlien(x, y);
         gameClearScreen();
         displayBoard();

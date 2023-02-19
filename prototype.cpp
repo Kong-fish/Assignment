@@ -25,6 +25,10 @@ const int MAX_ATTACK = 50;
 int alienLifeAttr, alienAttackAttr;
 int zombieLifeAttr[MAX_ROWS * MAX_COLS], zombieAttackAttr[MAX_ROWS * MAX_COLS];
 
+//Game Objeact
+int noOfObjects;
+char objects[];
+
 void difficulties()
 {
     char diff;
@@ -111,11 +115,6 @@ void defaultGameSettings()
     }
 }
 
-char getObject(int x, int y) 
-{
-    return board[y - 1][x - 1];
-}
-
 void Gameobj()
 {
     char objects[] = {' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'v', '^', '<', '>', 'h', 'p', 'r'};
@@ -170,7 +169,9 @@ void initializeBoard()
     //Place game objects randomly on the board
     Gameobj();
 }
+
 void displayBoard();
+
 void Help()
 {
     char input;
@@ -363,6 +364,58 @@ void zombieAttack()
             board[zombieX][y] = ' '; //kill Alien
             break;
         }
+    }
+}
+
+void objFunction()
+{
+    if(alienX==objects['p'] && alienY==objects['p']) 
+    {
+        cout<<"Alien gain a pod."<<endl;
+        zombieLifeAttr[MAX_ROWS * MAX_COLS]=-20;
+    }
+    else(alienX==objects['r'] && alienY==objects['r'])
+    {
+        cout<<"Alien flip the rock and found a pod."<<endl;
+        int objNo = rand() % noOfObjects;
+        objects['r']=objects[objNo];
+    }
+    else(alienX==objects['h'] && alienY==objects['h'])
+    {
+        cout<<"Alien found a health Pod."<<endl;
+        alienLifeAttr=+20;
+    }
+    else(alienX==objects['^'] && alienY==objects['^'])
+    {
+        cout<<"Alien gain a arrow."
+        alienAttackAttr=+20;
+        alienX=+1;
+        alienY=alienY;
+    }
+    else(alienX==objects['<'] && alienY==objects['<'])
+    {
+        cout<<"Alien gain a arrow."
+        alienAttackAttr=+20;
+        alienX=alienX;
+        alienY=alienY-1;   
+    }
+    else(alienX==objects['>'] && alienY==objects['>'])
+    {
+        cout<<"Alien gain a arrow."
+        alienAttackAttr=+20;
+        alienX=alienX;
+        alienY=alienY+1;
+    }
+    else(alienX==objects['v'] && alienY==objects['v'])
+    {
+        cout<<"Alien gain a arrow."
+        alienAttackAttr=+20;
+        alienX=alienX-1;
+        alienY=alienY;
+    }
+    else if(alienX==objects[' '] && alienY==objects[''])
+    {
+        cout<<"Alien move to a blankc space."
     }
 }
 
