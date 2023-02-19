@@ -18,8 +18,7 @@ List all the features completed.
 6. Alien is unable to move out of bound.
 7. "Invalid Input" will be shown when user move Alien out of bound or unable to generate game board.
 8. Able to display row numbers right side to the board and coloums numbers at the bottom of board.
-9. Able to save game file.
-10. Able to quit mid game.
+
 
 ### To Do
 

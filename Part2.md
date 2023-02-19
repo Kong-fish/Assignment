@@ -6,24 +6,27 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
 ## Minimum Requirements
 
+1. Alien Movements
+2. Zombie Movements
+3. Display Attribute
+4. Display Game Objects
+
 ### Completed
 
 List all the features completed.
 
-1. Cool Feature #1
-2. Cool Feature #2
-3. *add more*
+1. Able to choose default difficulities at the start of game.
+2. Able to change game board size after choosing difficulities.
+3. Able to display Game Attributes.
+4. Able to display Game Objects
+5. Able to save game file.
+6. Able to quit mid game.
 
 ### To Do
 
 List all the features not yet done. Remove this section if there is no incomplete requirements.
 
-1. Cool Feature #1
-2. *add more*
-
-## Additional Features
-
-Describe the additional features that has been implemented.
+1. Game Objects function
 
 ## Contributions
 
@@ -31,21 +34,37 @@ List down the contribution of each group members.
 
 For example:
 
-### Tony Stark
+### Kong Xin Yu
 
-1. Randomly generate game board.
-2. *add more*
+1. Fix game Ui.
+2. Implement function difficulities.
+3. Modify main().
+4. Fix after game attributes sudden end of programme.
+6. Implement Help (Game controls explaination) function.
+7. Documentation and demo video recording
 
-### Steve Rogers
 
-1. Zombie movement and attack behaviour.
-2. *add more*
+### Chan Yeng Hui
+
+1. Create game objects
+2. Implement zombie movement 
+3. Implement zombie attack
+4. Implement Zombie and Alien attributes display
+5. Initialize zombie and alien attributes 
+
 
 ### Dr. Strange
 
-1. Implement all game objects.
-2. *add more*
+1. Implement zombie life and attack attributes 
+2. Implement alien life and attack attributes
 
 ## Problems Encountered & Solutions
 
 Describe the problems encountered and provide the solutions / plan for the solutions.
+
+1. Difficulities reading the initial row,coloums and number of zombies.
+> Solution:Redefine case variables.
+
+2. Input lead to programme end
+> Solution: Zombie movement have for loop error.Redefine and make sure it loop.
+
