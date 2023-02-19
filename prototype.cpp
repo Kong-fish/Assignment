@@ -367,57 +367,57 @@ void zombieAttack()
     }
 }
 
-void objFunction()
-{
-    if(alienX==objects['p'] && alienY==objects['p']) 
-    {
-        cout<<"Alien gain a pod."<<endl;
-        zombieLifeAttr[MAX_ROWS * MAX_COLS]=-20;
-    }
-    else(alienX==objects['r'] && alienY==objects['r'])
-    {
-        cout<<"Alien flip the rock and found a pod."<<endl;
-        int objNo = rand() % noOfObjects;
-        objects['r']=objects[objNo];
-    }
-    else(alienX==objects['h'] && alienY==objects['h'])
-    {
-        cout<<"Alien found a health Pod."<<endl;
-        alienLifeAttr=+20;
-    }
-    else(alienX==objects['^'] && alienY==objects['^'])
-    {
-        cout<<"Alien gain a arrow."
-        alienAttackAttr=+20;
-        alienX=+1;
-        alienY=alienY;
-    }
-    else(alienX==objects['<'] && alienY==objects['<'])
-    {
-        cout<<"Alien gain a arrow."
-        alienAttackAttr=+20;
-        alienX=alienX;
-        alienY=alienY-1;   
-    }
-    else(alienX==objects['>'] && alienY==objects['>'])
-    {
-        cout<<"Alien gain a arrow."
-        alienAttackAttr=+20;
-        alienX=alienX;
-        alienY=alienY+1;
-    }
-    else(alienX==objects['v'] && alienY==objects['v'])
-    {
-        cout<<"Alien gain a arrow."
-        alienAttackAttr=+20;
-        alienX=alienX-1;
-        alienY=alienY;
-    }
-    else if(alienX==objects[' '] && alienY==objects[''])
-    {
-        cout<<"Alien move to a blankc space."
-    }
-}
+//void objFunction()
+//{
+//    if(alienX==objects['p'] && alienY==objects['p']) 
+//    {
+//        cout<<"Alien gain a pod."<<endl;
+//        zombieLifeAttr[MAX_ROWS * MAX_COLS]=-20;
+//    }
+//    else(alienX==objects['r'] && alienY==objects['r'])
+//    {
+//        cout<<"Alien flip the rock and found a pod."<<endl;
+//        int objNo = rand() % noOfObjects;
+//        objects['r']=objects[objNo];
+//    }
+//    else(alienX==objects['h'] && alienY==objects['h'])
+//    {
+//        cout<<"Alien found a health Pod."<<endl;
+//       alienLifeAttr=+20;
+//    }
+//    else(alienX==objects['^'] && alienY==objects['^'])
+//    {
+//        cout<<"Alien gain a arrow."
+//        alienAttackAttr=+20;
+//        alienX=+1;
+//        alienY=alienY;
+//    }
+//    else(alienX==objects['<'] && alienY==objects['<'])
+//    {
+//        cout<<"Alien gain a arrow."
+//        alienAttackAttr=+20;
+//        alienX=alienX;
+//       alienY=alienY-1;   
+//    }
+//    else(alienX==objects['>'] && alienY==objects['>'])
+//    {
+//        cout<<"Alien gain a arrow."
+//        alienAttackAttr=+20;
+//        alienX=alienX;
+//        alienY=alienY+1;
+//    }
+//    else(alienX==objects['v'] && alienY==objects['v'])
+//    {
+//        cout<<"Alien gain a arrow."
+//        alienAttackAttr=+20;
+//        alienX=alienX-1;
+//        alienY=alienY;
+//    }
+//    else if(alienX==objects[' '] && alienY==objects[''])
+//    {
+//        cout<<"Alien move to a blankc space."
+//    }
+//}
 
 void saveGame(string fileName)
 {

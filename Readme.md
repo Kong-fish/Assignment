@@ -9,8 +9,8 @@ Alien vs. Zombie is a text-based game where player are able to input simple comm
 The player will use simple command such as up(^), down(v), left(<) and right(>) to move around the game board and attack the zombies.
 
 There will be multiple game object where player will be able to interact with to make the game even more fun. XD
-![Game Board Generation]("C:\Users\kongf\OneDrive\Documents\GitHub\Git\Screenshot\Screenshot (84).png")
-![Display Help]("C:\Users\kongf\OneDrive\Documents\GitHub\Git\Screenshot\Screenshot (85).png")
+![Game Board Generation](https://github.com/Kong-fish/Assignment/blob/main/Screenshot/Screenshot%20(84).png)
+![Display Help](https://github.com/Kong-fish/Assignment/blob/main/Screenshot/Screenshot%20(85).png)
 
 
 Please provide the YouTube link to your [Video Demo](https://youtu.be/x4x--XBjtP4).
