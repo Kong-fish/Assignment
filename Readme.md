@@ -19,11 +19,11 @@ Please provide the YouTube link to your [Video Demo](https://youtu.be/x4x--XBjtP
 
 1. Download file into local machine
 First, Player is advice to download the whole program as a zip file into local machine.
-Second, Unzip the zip file.
-Thirdly, Right click on the main.cpp application file.
-Choose the option copy as path. Then player will get the path directed to the program.
+2. Unzip the zip file.
+3. Right click on the main.cpp application file.
+4. Choose the option copy as path. Then player will get the path directed to the program.
 Player may use their choice of command shell to open up the application.
-Paste the copied path and enjoy!
+5. Paste the copied path and enjoy!
 
 ```
 g++ main.cpp folder1\code.cpp folder2\code.cpp ......
