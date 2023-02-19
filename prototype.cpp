@@ -135,6 +135,19 @@ void Gameobj()
     
 }
 
+void GameobjAttr()
+{
+    int x, y;
+    if (board[x][y] == 'v' || board[x][y] == '^' || board[x][y] == '<' || board[x][y] == '>')
+    {
+        alienAttackAttr += 20;
+    }
+    else if (board[x][y] == 'h')
+    {
+        alienLifeAttr += 20;
+    }
+}
+
 void initializeBoard()
 {
     // Clear board
