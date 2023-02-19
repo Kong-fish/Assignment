@@ -12,7 +12,7 @@
 #include <fstream>
 #include <iomanip> //for setw()
 #include <cstdlib>
-#include "helper.cpp"
+#include "pf/helper.cpp"
 using namespace std;
 
 const int MAX_ROWS = 100;
@@ -192,7 +192,7 @@ void Help()
     cout << "\n help     - Display user commands explainations.";
     cout << "\n v        - Save the game.";
     cout << "\n l        - Load previous game.";
-    cout << "\nq         - Quit game.\n";
+    cout << "\n q         - Quit game.\n";
     cout << "\n Press any key to continue your game.";
     cin >> input;
     pf::ClearScreen();
