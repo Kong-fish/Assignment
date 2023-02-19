@@ -75,7 +75,7 @@ For load game, player reinput previous save game and the programme load from the
 
 ## Contributors
 
-- Kong Xin Yu
+- Kong Xin Yu [Self work function](https://github.com/kongfish123/self-development)
 - Chan Yeng Hui
 - Wong Wai Yee
 
